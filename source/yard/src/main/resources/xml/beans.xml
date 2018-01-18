@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-init-method="init" default-destroy-method="destory" 
+	>
 	<!-- Basic Bean creation -->
 	<!-- <bean id="xmlPojo" class="com.doc.spring.xml.pojo.XmlPojo" name="xmlname1,xmlname2"> -->
 	<!-- <property name="name" value="Xml config name"></property> -->
@@ -10,10 +12,11 @@
 	<!-- Factory bean creation -->
 	<bean id="pojoFactory" class="com.doc.spring.factory.PojoFactory">
 	</bean>
-	<bean id="xmlPojo" factory-bean="pojoFactory" factory-method="createPojo" name="xmlname1,xmlname2" scope="prototype" >
+	<bean destroy-method="destory" id="xmlPojo" factory-bean="pojoFactory" factory-method="createPojo" name="xmlname1,xmlname2"  >
 	</bean>
 
-	<bean id="xmlEmbeddedPojo" class="com.doc.spring.xml.pojo.XmlEmbeddedPojo" name="xmlEmbeddedPojoname1,xmlEmbedddedname2" p:name="xmlEmbedded" p:xmlPojo-ref="xmlPojo">
+	<bean id="xmlEmbeddedPojo" class="com.doc.spring.xml.pojo.XmlEmbeddedPojo" name="xmlEmbeddedPojoname1,xmlEmbedddedname2" p:name="xmlEmbedded" 
+	>
 <!-- 		<property name="name" value="xmlEmbedded"></property> -->
 <!-- 		<property name="xmlPojo" ref="xmlPojo"></property> -->
 	</bean>
@@ -53,4 +56,6 @@
 	 <bean class="com.doc.spring.xml.pojo.BasicLoockupInjectionBean" id="basicLookupInjection" >
 	 <lookup-method name="getNewXmlPojo" bean="xmlPojo"/>
 	 </bean>
+	 
+	 <bean id="scopeThreadBean" class="com.doc.spring.xml.pojo.ScopeThreadBean" scope="thread"></bean>
 </beans>
