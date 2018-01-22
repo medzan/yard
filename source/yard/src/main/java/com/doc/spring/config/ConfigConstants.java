@@ -10,9 +10,6 @@ import java.io.File;
  *
  */
 public class ConfigConstants {
-	
-	public static String xmlApplication="xml"+File.separator+"application.xml";
-	public static String xmlBeans="xml"+File.separator+"beans.xml";
-	
-	public static String groovyApplication="groovy"+File.separator+"application.groovy";
+
+	public static final String APP_PROPERTIES="app"+File.separator+"app.properties";
 }
