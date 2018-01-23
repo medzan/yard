@@ -12,6 +12,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.context.support.ResourceBundleMessageSource;
 
 /**
  * @author Elmehdi.zangui
@@ -25,12 +27,23 @@ public class Application {
 	@Bean
 	@Scope("prototype")
 	public Logger logger(DependencyDescriptor injectionPoint) {
+		if (injectionPoint.getField() != null) {
+			return LoggerFactory.getLogger(injectionPoint.getField().getDeclaringClass());
+		}
 		return LoggerFactory.getLogger(injectionPoint.getMethodParameter().getContainingClass());
 	}
 
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
 		return new PropertySourcesPlaceholderConfigurer();
+	}
+
+	@Bean
+	public ReloadableResourceBundleMessageSource messageSource() {
+		ReloadableResourceBundleMessageSource ms = new ReloadableResourceBundleMessageSource();
+		ms.setBasenames("messages", "exception");
+		ms.setFallbackToSystemLocale(false);
+		return ms;
 	}
 
 }
