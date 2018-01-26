@@ -5,14 +5,24 @@
 	<bean id="dependBean" class="com.doc.spring.custom.DependsOnExoticType">
 		<property name="type" value="ThisMeThe_ExoticType"></property>
 	</bean>
-	
+
 	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
 		<property name="customEditors">
 			<map>
 				<entry key="com.doc.spring.custom.ExoticType" value="com.doc.spring.custom.ExoticTypeEditor">
-				
+
 				</entry>
 			</map>
 		</property>
 	</bean>
+
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="propertyEditorRegistrars">
+			<list>
+				<ref bean="customPropertyEditorRegistrar" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="customPropertyEditorRegistrar" class="com.doc.spring.custom.CustomPropertyEditorRegistrar" />
 </beans>

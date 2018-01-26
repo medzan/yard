@@ -3,6 +3,9 @@
  */
 package com.doc.spring.javaconfig;
 
+
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.DependencyDescriptor;
@@ -12,6 +15,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.convert.ConversionService;
+import org.springframework.core.convert.support.DefaultConversionService;
+import org.springframework.format.datetime.DateFormatter;
+import org.springframework.format.datetime.DateFormatterRegistrar;
+import org.springframework.format.datetime.DateTimeFormatAnnotationFormatterFactory;
+import org.springframework.format.datetime.standard.DateTimeFormatterFactoryBean;
+import org.springframework.format.number.NumberFormatAnnotationFormatterFactory;
+import org.springframework.format.support.DefaultFormattingConversionService;
+import org.springframework.format.support.FormattingConversionService;
 
 /**
  * @author Elmehdi.zangui
@@ -33,4 +45,23 @@ public class Application {
 		return new PropertySourcesPlaceholderConfigurer();
 	}
 
+//	@Bean
+//	public ConversionService conversionService() {
+//		return new DefaultConversionService();
+//	}
+	 @Bean
+	    public DefaultFormattingConversionService conversionService() {
+
+	        // Use the DefaultFormattingConversionService but do not register defaults
+	        DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService(false);
+	        
+	        // Ensure @NumberFormat is still supported
+	        conversionService.addFormatterForFieldAnnotation(new NumberFormatAnnotationFormatterFactory());
+	        conversionService.addFormatterForFieldType(Date.class, new DateFormatter("yyyyMMdd"));
+	        
+//	        DateFormatterRegistrar registrar = new DateFormatterRegistrar();
+//	        registrar.setFormatter(new DateFormatter("yyyyMMdd"));
+//	        registrar.registerFormatters(conversionService);
+	        return conversionService;
+	    }
 }
