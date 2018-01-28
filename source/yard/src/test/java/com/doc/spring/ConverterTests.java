@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,7 +12,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.doc.spring.custom.CustomConverter;
 import com.doc.spring.javaconfig.Application;
 
-import junit.framework.Assert;
 
 public class ConverterTests {
 

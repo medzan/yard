@@ -25,4 +25,11 @@
 	</bean>
 
 	<bean id="customPropertyEditorRegistrar" class="com.doc.spring.custom.CustomPropertyEditorRegistrar" />
+	
+	<bean id="validator"
+    class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+    
+    <bean id="validatorServices"  class="com.doc.spring.custom.ValidatorServices">
+    	<property name="javaxValidator" ref="validator"></property>
+    </bean>
 </beans>
