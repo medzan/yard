@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.doc.spring.javaconfig;
+package com.doc.spring.config;
 
 
 import java.util.Date;

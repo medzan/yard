@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.doc.spring.config;
+package com.doc.spring.constants;
 
 import java.io.File;
 
