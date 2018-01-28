@@ -24,6 +24,7 @@ import org.springframework.format.datetime.standard.DateTimeFormatterFactoryBean
 import org.springframework.format.number.NumberFormatAnnotationFormatterFactory;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 /**
  * @author Elmehdi.zangui
@@ -64,4 +65,8 @@ public class Application {
 //	        registrar.registerFormatters(conversionService);
 	        return conversionService;
 	    }
+	 @Bean
+	 public LocalValidatorFactoryBean validator() {
+		 return new LocalValidatorFactoryBean();
+	 }
 }

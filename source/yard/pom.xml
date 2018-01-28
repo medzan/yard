@@ -23,7 +23,8 @@
 			<artifactId>logback-classic</artifactId>
 			<version>1.0.13</version>
 		</dependency>
-		<!-- Resolve NoClassDefFoundError: groovy/lang/GroovyObject when using groovy -->
+		<!-- Resolve NoClassDefFoundError: groovy/lang/GroovyObject when using 
+			groovy -->
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-all</artifactId>
@@ -53,5 +54,21 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.0.7.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.el</artifactId>
+			<version>3.0.1-b08</version>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.hibernate</groupId> -->
+<!-- 			<artifactId>hibernate-validator-cdi</artifactId> -->
+<!-- 			<version>6.0.7.Final</version> -->
+<!-- 		</dependency> -->
 	</dependencies>
 </project>
