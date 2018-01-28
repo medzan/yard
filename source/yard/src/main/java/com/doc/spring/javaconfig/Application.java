@@ -14,16 +14,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.convert.ConversionService;
-import org.springframework.core.convert.support.DefaultConversionService;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.format.datetime.DateFormatter;
-import org.springframework.format.datetime.DateFormatterRegistrar;
-import org.springframework.format.datetime.DateTimeFormatAnnotationFormatterFactory;
-import org.springframework.format.datetime.standard.DateTimeFormatterFactoryBean;
 import org.springframework.format.number.NumberFormatAnnotationFormatterFactory;
 import org.springframework.format.support.DefaultFormattingConversionService;
-import org.springframework.format.support.FormattingConversionService;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 /**
@@ -69,4 +65,12 @@ public class Application {
 	 public LocalValidatorFactoryBean validator() {
 		 return new LocalValidatorFactoryBean();
 	 }
+	 @Bean
+		public ReloadableResourceBundleMessageSource messageSource() {
+			ReloadableResourceBundleMessageSource ms = new ReloadableResourceBundleMessageSource();
+			ms.setBasenames("exception");
+			ms.setFallbackToSystemLocale(false);
+			return ms;
+		}
+	 
 }

@@ -1,5 +1,7 @@
 package com.doc.spring;
 
+import java.util.Locale;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -31,9 +33,9 @@ public class ValidatorsTests {
 		 Assert.assertNotNull(validatorServices.getJavaxValidator());
 		 Assert.assertNotNull(validatorServices.getValidatorFactory());
 		 SimplePojo bean = context.getBean(SimplePojo.class);
-		 Errors errors = new BeanPropertyBindingResult(bean, "simplePojo");
+		 BeanPropertyBindingResult errors = new BeanPropertyBindingResult(bean, "simplePojo");
 		validatorServices.getSpringValidator().validate(bean, errors);
-		System.out.println(errors);
-		Assert.assertEquals(0, errors.getErrorCount());
+		Assert.assertEquals(1, errors.getErrorCount());
+		errors.getAllErrors().forEach(e ->  System.out.println(context.getMessage(e, Locale.FRENCH)));
 	}
 }
