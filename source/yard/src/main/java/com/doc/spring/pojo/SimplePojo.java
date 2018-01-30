@@ -3,6 +3,9 @@
  */
 package com.doc.spring.pojo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Elmehdi.zangui
  *
@@ -10,6 +13,7 @@ package com.doc.spring.pojo;
 public class SimplePojo {
 
 	private String name;
+	private List<CallPojo> list = new ArrayList<CallPojo>();
 
 	public String getName() {
 		return name;
@@ -25,5 +29,13 @@ public class SimplePojo {
 
 	public String call(String ag0) {
 		return "Only one arg " + ag0;
+	}
+
+	public List<CallPojo> getList() {
+		return list;
+	}
+
+	public void setList(List<CallPojo> list) {
+		this.list = list;
 	}
 }
