@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.EnableLoadTimeWeaving;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 
@@ -20,6 +21,7 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 @ComponentScan(basePackages = "com.doc.spring.*")
 @EnableAspectJAutoProxy
+//@EnableLoadTimeWeaving
 public class Application {
 
 	@Bean

@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component;
 
 import com.doc.spring.aop.target.MostUseLessPojo;
 
-@Aspect
-@Component
-@Order(1)
+//@Aspect
+//@Component
+//@Order(1)
 public class AppAspect {
 	public AppAspect() {
 		System.out.println("i'am here");

@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 import com.doc.spring.aop.introduction.IInto;
 import com.doc.spring.aop.introduction.IntroService;
 
-@Component
-@Aspect
+//@Component
+//@Aspect
 public class AppIntroduction {
 
 	@DeclareParents(value = "com.doc.spring.aop.service.*", defaultImpl = IntroService.class)
