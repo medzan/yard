@@ -9,18 +9,19 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.DependencyDescriptor;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
-import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.format.datetime.DateFormatter;
 import org.springframework.format.number.NumberFormatAnnotationFormatterFactory;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 
 /**
  * @author Elmehdi.zangui
@@ -42,10 +43,6 @@ public class Application {
 		return new PropertySourcesPlaceholderConfigurer();
 	}
 
-//	@Bean
-//	public ConversionService conversionService() {
-//		return new DefaultConversionService();
-//	}
 	 @Bean
 	    public DefaultFormattingConversionService conversionService() {
 
@@ -61,16 +58,21 @@ public class Application {
 //	        registrar.registerFormatters(conversionService);
 	        return conversionService;
 	    }
-	 @Bean
+	 @Bean(name="springValidator")
 	 public LocalValidatorFactoryBean validator() {
 		 return new LocalValidatorFactoryBean();
 	 }
 	 @Bean
-		public ReloadableResourceBundleMessageSource messageSource() {
+		public MessageSource messageSource () {
 			ReloadableResourceBundleMessageSource ms = new ReloadableResourceBundleMessageSource();
 			ms.setBasenames("exception");
 			ms.setFallbackToSystemLocale(false);
 			return ms;
 		}
+	 
+//	 @Bean
+//	 public MethodValidationPostProcessor methodValidationPostProcessor() {
+//		return new MethodValidationPostProcessor(); 
+//	 }
 	 
 }
