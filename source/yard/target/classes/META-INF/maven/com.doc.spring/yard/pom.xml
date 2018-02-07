@@ -29,6 +29,13 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- Testing branch -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>5.0.2.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 </project>

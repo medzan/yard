@@ -11,17 +11,16 @@ import org.springframework.context.annotation.Profile;
 import com.doc.spring.bean.SimpleBean;
 
 /**
- * @author Elmehdi.zangui
+ * @author elmehdi.zangui
  *
  */
 @Configuration
 @ComponentScan(basePackages = "com.doc.spring")
-@Profile("default")
-public class Application {
+@Profile("DEV")
+public class ApplicationDev {
 
 	@Bean
 	public SimpleBean simpleBean() {
-		return new SimpleBean("default");
+		return new SimpleBean("DEV");
 	}
-
 }
