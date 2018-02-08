@@ -3,6 +3,7 @@
  */
 package com.doc.spring.bean;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,7 +12,10 @@ import org.springframework.stereotype.Component;
  */
 //@Component
 public class SimpleBean {
-
+	
+	@Value("${prop:prop}")
+	private String prop;
+	
 	private String name;
 	private String profile;
 
@@ -36,6 +40,14 @@ public class SimpleBean {
 
 	public void setProfile(String profile) {
 		this.profile = profile;
+	}
+
+	public String getProp() {
+		return prop;
+	}
+
+	public void setProp(String prop) {
+		this.prop = prop;
 	}
 
 }
