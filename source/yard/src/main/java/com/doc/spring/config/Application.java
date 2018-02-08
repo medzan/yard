@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Scope;
  */
 @Configuration
 @ComponentScan(basePackages = "com.doc.spring.*")
-@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy(exposeProxy=true)
 //@EnableLoadTimeWeaving
 public class Application {
 

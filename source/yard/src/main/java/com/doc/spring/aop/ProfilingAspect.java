@@ -25,4 +25,7 @@ public class ProfilingAspect {
 
     @Pointcut("execution(* com.doc.spring.aop.service.CustomService.*(..))")
     public void methodsToBeProfiled(){}
+	
+	
+
 }
