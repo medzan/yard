@@ -32,41 +32,6 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
  */
 @Configuration
 @ComponentScan(basePackages = "com.doc.spring")
-@PropertySource("classpath:app/app.properties")
 public class Application {
 
-	@Bean
-	@Scope("prototype")
-	public Logger logger(DependencyDescriptor injectionPoint) {
-		return LoggerFactory.getLogger(injectionPoint.getMethodParameter().getContainingClass());
-	}
-
-	@Bean
-	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-		return new PropertySourcesPlaceholderConfigurer();
-	}
-
-//	@Bean
-//	public ConversionService conversionService() {
-//		return new DefaultConversionService();
-//	}
-	 @Bean
-	    public DefaultFormattingConversionService conversionService() {
-
-	        // Use the DefaultFormattingConversionService but do not register defaults
-	        DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService(false);
-	        
-	        // Ensure @NumberFormat is still supported
-	        conversionService.addFormatterForFieldAnnotation(new NumberFormatAnnotationFormatterFactory());
-	        conversionService.addFormatterForFieldType(Date.class, new DateFormatter("yyyyMMdd"));
-	        
-//	        DateFormatterRegistrar registrar = new DateFormatterRegistrar();
-//	        registrar.setFormatter(new DateFormatter("yyyyMMdd"));
-//	        registrar.registerFormatters(conversionService);
-	        return conversionService;
-	    }
-	 @Bean
-	 public LocalValidatorFactoryBean validator() {
-		 return new LocalValidatorFactoryBean();
-	 }
 }

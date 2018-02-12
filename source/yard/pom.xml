@@ -7,26 +7,38 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>yard</name>
 	<url>http://maven.apache.org</url>
+	<properties>
+		<spring-version>5.0.3.RELEASE</spring-version>
+		<slf4j-version>1.7.25</slf4j-version>
+		<logback-version>1.0.13</logback-version>
+		<jUnit-version>4.12</jUnit-version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>5.0.2.RELEASE</version>
+			<version>${spring-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
-			<version>1.7.25</version>
+			<version>${slf4j-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.0.13</version>
+			<version>${logback-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>${jUnit-version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring-version}</version>
 			<scope>test</scope>
 		</dependency>
 
