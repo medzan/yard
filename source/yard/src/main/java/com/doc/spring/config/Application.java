@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
+import org.springframework.core.Ordered;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -24,8 +26,9 @@ import com.doc.spring.config.ds.JdbcDataSourceConfig;
  */
 @Configuration
 @ComponentScan(basePackages = "com.doc.spring")
-@EnableTransactionManagement
+@EnableTransactionManagement(order=10)
 @Import({JdbcDataSourceConfig.class,HIbernateConfig.class})
+@EnableAspectJAutoProxy
 public class Application {
 
 	@Autowired
@@ -39,7 +42,7 @@ public class Application {
 	// return new DataSourceTransactionManager(dataSource);
 	// }
 	@Bean
-	public PlatformTransactionManager hibernateTransactionManager() {
+	public PlatformTransactionManager transactionManager() {
 		HibernateTransactionManager manager = new HibernateTransactionManager(sessionFactory);
 		return manager;
 	}
